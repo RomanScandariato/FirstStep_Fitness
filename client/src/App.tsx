@@ -8,7 +8,7 @@ import ProtectRoute from './components/ProtectRoute';
 import AuthForm from './pages/AuthForm';
 import Dashboard from './pages/Dashboard/index';
 import Landing from './pages/Landing';
-import PetForm from './pages/PetForm';
+
 
 
 function App() {
@@ -39,11 +39,6 @@ function App() {
             </ProtectRoute>
           )} />
 
-          <Route path="/pet" element={(
-            <ProtectRoute>
-              <PetForm />
-            </ProtectRoute>
-          )} />
 
           <Route path="/dashboard" element={(
             <ProtectRoute>

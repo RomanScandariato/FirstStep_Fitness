@@ -34,19 +34,4 @@ export const LOGOUT_USER = gql`
 `;
 
 
-// Pet Mutations
-export const CREATE_PET = gql`
-  mutation CreatePet($name: String, $type: String, $age: Int) {
-    createPet(name: $name, type: $type, age: $age) {
-      message
-    }
-  }
-`;
 
-export const CREATE_POST = gql`
-  mutation CreatePost($title: String, $body: String, $pet: ID) {
-    createPost(title: $title, body: $body, pet: $pet) {
-      message
-    }
-  }
-`;

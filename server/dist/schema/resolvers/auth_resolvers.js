@@ -34,7 +34,7 @@ const auth_resolvers = {
             try {
                 const user = await User.create(args);
                 const token = createToken(user._id);
-                context.res.cookie('pet_token', token, {
+                context.res.cookie('workout_token', token, {
                     httpOnly: true,
                     secure: process.env.PORT ? true : false,
                     sameSite: true
@@ -61,7 +61,7 @@ const auth_resolvers = {
                 throw new GraphQLError('Password is incorrect');
             }
             const token = createToken(user._id);
-            context.res.cookie('pet_token', token, {
+            context.res.cookie('workout_token', token, {
                 httpOnly: true,
                 secure: process.env.PORT ? true : false,
                 sameSite: true

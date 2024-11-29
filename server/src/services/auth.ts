@@ -11,9 +11,9 @@ interface AuthenticatedRequest extends Request {
 }
 
 export const authenticate = async ({ req, res }: { req: AuthenticatedRequest; res: Response }) => {
-  const pet_token = req.cookies?.pet_token;
+  const workout_token = req.cookies?.workout_token;
 
-  if (pet_token) {
+  if (workout_token) {
     try {
 
       if (!process.env.JWT_SECRET) {
@@ -25,7 +25,7 @@ export const authenticate = async ({ req, res }: { req: AuthenticatedRequest; re
         }
       }
 
-      const userData = verify(pet_token, process.env.JWT_SECRET);
+      const userData = verify(workout_token, process.env.JWT_SECRET);
 
       if (!userData || typeof userData === 'string') {
         return {

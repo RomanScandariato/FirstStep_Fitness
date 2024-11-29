@@ -4,8 +4,8 @@ import User from '../models/User.js';
 const { verify } = jwt;
 dotenv.config();
 export const authenticate = async ({ req, res }) => {
-    const pet_token = req.cookies?.pet_token;
-    if (pet_token) {
+    const workout_token = req.cookies?.workout_token;
+    if (workout_token) {
         try {
             if (!process.env.JWT_SECRET) {
                 console.log('MUST ADD JWT_SECRET TO .env!');
@@ -14,7 +14,7 @@ export const authenticate = async ({ req, res }) => {
                     res: res
                 };
             }
-            const userData = verify(pet_token, process.env.JWT_SECRET);
+            const userData = verify(workout_token, process.env.JWT_SECRET);
             if (!userData || typeof userData === 'string') {
                 return {
                     req: req,
