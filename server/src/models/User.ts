@@ -22,12 +22,7 @@ const userSchema = new Schema({
         type: String,
         required: true,
         minLength: [6, 'Your password must be at least 6 characters in length']
-    },
-    pets: [{
-        type: Schema.Types.ObjectId,
-        required: true,
-        ref: 'Note'
-    }]
+    }
 }, {
     toJSON: {
         transform(_, user) {

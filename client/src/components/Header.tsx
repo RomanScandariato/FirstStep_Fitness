@@ -29,15 +29,15 @@ function Header() {
   }
 
   return (
-    <Navbar bg="light" data-bs-theme="light">
+    <Navbar style={{ paddingTop: '18px', paddingBottom: '18px' }}>
       <Container className="nav-wrap">
-        <Navbar.Brand as={NavLink} to="/">FirstStep_Fitness</Navbar.Brand>
+        <Navbar.Brand as={NavLink} to="/">FirstStep Fitness</Navbar.Brand>
         <Nav className="ms-auto">
           <Nav.Link as={NavLink} to="/">Home</Nav.Link>
 
           {state.user ? (
             <>
-              <Nav.Link as={NavLink} to="/dashboard">Dashboard</Nav.Link>
+              <Nav.Link as={NavLink} to="/plan">My Workout Plan</Nav.Link>
               <Nav.Link as={NavLink} to="/workout">Add Workout</Nav.Link>
               <NavDropdown title="Profile Menu">
                 <NavDropdown.ItemText className="border-bottom mb-2">Welcome, {state.user.username}</NavDropdown.ItemText>
