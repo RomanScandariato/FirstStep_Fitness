@@ -2,6 +2,7 @@ html, body, #root {
   height: 100%;
   background-color: #ECE4DA;
   color: #574B3F;
+  
 }
 
 .loading-overlay {
@@ -19,6 +20,11 @@ nav a:hover:not(.navbar-brand) {
   text-decoration: underline;
 }
 
+.navbar-brand {
+  font-size: 25px !important;
+  color: #574B3F !important;
+}
+
 .dropdown-menu.show {
   max-width: 70px !important;
 }
@@ -27,10 +33,24 @@ nav a:hover:not(.navbar-brand) {
   word-wrap: break-word !important;
 }
 
+@keyframes slideIn {
+  from {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
 .landing-hero-image {
-  background-image: url(/images/fitness_hero_image.png);
+  background-image: linear-gradient(rgba(41, 41, 41, 0.5), rgba(0, 0, 0, 0.5)), url(/images/fitness_hero_image.png);
   background-size: cover;
-  min-height: 700px;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
+  margin: 0;
 }
 
 .landing-text {
@@ -38,7 +58,31 @@ nav a:hover:not(.navbar-brand) {
   color: #fff;
   min-width: 50%;
   position: relative;
-  top: -135px;
+  top: -450px;
+  animation: slideIn 2s ease-in-out;
+  font-size: 5rem;
+}
+
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.animate-slide-in-left {
+  animation: slideInLeft 2s ease-in-out;
+}
+
+.search-form-control {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30;
 }
 
 .landing-post {
@@ -53,6 +97,75 @@ nav a:hover:not(.navbar-brand) {
   background: #D2E887;
   width: 7px;
   height: 100%;
+}
+
+.aboutimg {
+  background-image: linear-gradient(rgba(41, 41, 41, 0.7), rgba(0, 0, 0, 0.7)), url('/images/about_page_image.png');
+  background-size: cover;
+  min-height:90vh;
+}
+.about-text {
+  padding: 40px;
+  text-align: center;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.about-text h1 {
+  font-size: 4rem;
+}
+.about-text p {
+  font-weight: 300;
+}
+
+.about-text-wrap {
+  max-width: 600px; 
+  word-wrap: break-word;
+}
+
+.centered-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-image: linear-gradient(rgba(41, 41, 41, 0.5), rgba(0, 0, 0, 0.5)), url('/images/add_workout_image.png');
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+}
+
+.workout-form input::placeholder,
+.workout-form textarea::placeholder {
+  color: #b5b4b4;
+}
+
+
+@keyframes fadeIn {
+  from {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.workout-form {
+  border: 1px solid #ccc;
+  padding: 20px;
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.8);
+  max-width: 500px;
+  width: 100%;
+  animation: fadeIn 2s ease-in-out;
+}
+
+.form-heading {
+  text-align: center;
+  margin-bottom: 20px;
 }
 
 @media (max-width: 768px) {
@@ -74,14 +187,3 @@ nav a:hover:not(.navbar-brand) {
     width: 450px !important;
   }
 }
-
-
-
-
-
-
-
-
-
-
-

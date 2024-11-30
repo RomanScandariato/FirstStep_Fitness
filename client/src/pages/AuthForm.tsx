@@ -48,7 +48,7 @@ function AuthForm({isLogin}: {isLogin: boolean}) {
         user: res.data[prop].user
       }));
 
-      navigate('/dashboard');
+      navigate('/plan');
     } catch (error: any) {
       setFormData({
         ...formData,
@@ -58,9 +58,16 @@ function AuthForm({isLogin}: {isLogin: boolean}) {
   }
 
   return (
+    <div className="d-flex justify-content-center align-items-center vh-100" style={{
+      backgroundImage: 'linear-gradient(rgba(41, 41, 41, 0.5), rgba(0, 0, 0, 0.5)), url(https://fal.media/files/rabbit/_W-BZl5e2tNXe-zfuV-4f_4b1640c2000e414bb67a9c6e20d03f2c.jpg)',
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+      padding: '20px',
+      borderRadius: '0px',
+  }}>
     <Container>
       <Form onSubmit={handleSubmit} style={{width: '500px'}} className="mx-auto mt-5">
-        <h2 className="text-center mt-3">{isLogin ? 'Log In' : 'Register'}</h2>
+        <h2 className="text-white text-center mt-3">{isLogin ? 'Log In' : 'Register'}</h2>
 
         {formData.errorMessage && (
           <p className="text-center text-danger">{formData.errorMessage}</p>
@@ -68,21 +75,21 @@ function AuthForm({isLogin}: {isLogin: boolean}) {
 
         {!isLogin && (
           <Form.Group className="mb-3" controlId="formBasicUsername">
-            <Form.Label>Username</Form.Label>
+            <Form.Label className="text-white">Username</Form.Label>
             <Form.Control name="username" onChange={handleInputChange} value={formData.username} autoComplete="username" type="text" placeholder="Enter username" />
           </Form.Group>
         )}
 
         <Form.Group  className="mb-3" controlId="formBasicEmail">
-          <Form.Label>Email address</Form.Label>
+          <Form.Label className="text-white">Email address</Form.Label>
           <Form.Control name="email" onChange={handleInputChange} value={formData.email} type="email" placeholder="Enter email" />
-          <Form.Text className="text-muted">
+          <Form.Text className="text-white">
             We'll never share your email with anyone else.
           </Form.Text>
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formBasicPassword">
-          <Form.Label>Password</Form.Label>
+          <Form.Label className="text-white">Password</Form.Label>
           <Form.Control name="password" onChange={handleInputChange} value={formData.password} autoComplete="current-password" type="password" placeholder="Password" />
         </Form.Group>
 
@@ -95,12 +102,13 @@ function AuthForm({isLogin}: {isLogin: boolean}) {
         </Form.Group>
 
         <div className="d-grid gap-2">
-          <Button variant="primary" type="submit">
+          <Button variant="dark" type="submit">
             Submit
           </Button>
         </div>
       </Form>
     </Container>
+    </div>
   )
 }
 

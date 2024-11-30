@@ -5,7 +5,7 @@ function Footer() {
 
   return (
     <footer className="bg-light">
-      <Container className="d-flex justify-content-between py-5">
+      <Container className="d-flex justify-content-between py-4">
         <p>Copyright &copy; {date.getFullYear()}</p>
         <p>Dev & Design By Roman Scandariato, Matt Oshea, Matt Morgan, Razieh Zarrabi</p>
       </Container>
