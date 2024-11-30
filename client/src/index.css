@@ -6,12 +6,12 @@ html, body, #root {
 
 @font-face {
   font-family: 'ModernFont';
-  src: url('../public/images/fonts/ModernFont.ttf');
+  src: url('../images/fonts/ModernFont.ttf');
 }
 
 @font-face {
   font-family: 'Almarai';
-  src: url('../public/images/fonts/Almarai.ttf');
+  src: url('../images/fonts/Almarai.ttf');
 }
 
 body {
@@ -169,6 +169,14 @@ nav a:hover:not(.navbar-brand) {
 }
 
 .who-are-we-text {
+  font-family: 'ModernFont' !important;
+}
+
+.form-heading {
+  font-family: 'ModernFont' !important;
+}
+
+.auth-title {
   font-family: 'ModernFont' !important;
 }
 
