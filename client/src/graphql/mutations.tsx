@@ -34,4 +34,20 @@ export const LOGOUT_USER = gql`
 `;
 
 
-
+// Workout Mutations
+export const SAVE_WORKOUT = gql`
+  mutation SaveWorkout($name: String!, $exercises: [ExerciseInput]!) {
+    saveWorkout(name: $name, exercises: $exercises) {
+      _id
+      name
+      exercises {
+        name
+        type
+        muscle
+        equipment
+        difficulty
+        instructions
+      }
+    }
+  }
+`;
