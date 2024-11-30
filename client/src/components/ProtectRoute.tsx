@@ -7,11 +7,11 @@ function ProtectRoute(props: any) {
 
   // If the user is logged in, keep them from visiting the auth form pages
   if (!state.loading && state.user && location.pathname.match(/(register|login)/gi)) {
-    return <Navigate to="/dashboard" />
+    return <Navigate to="/plan" />
   }
 
   // If the user is not logged in and they try to visit a user related page, take them to the login page
-  if (!state.loading && !state.user && location.pathname.match(/(pet|post|dashboard)/gi)) {
+  if (!state.loading && !state.user && location.pathname.match(/(workout|plan)/gi)) {
     return <Navigate to="/login" />
   }
 

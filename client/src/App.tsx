@@ -1,19 +1,23 @@
 import {Routes, Route} from 'react-router-dom';
 import { useStore } from './store';
 
+
 import Header from './components/Header';
 import Footer from './components/Footer';
 import ProtectRoute from './components/ProtectRoute';
 
 import AuthForm from './pages/AuthForm';
-import Dashboard from './pages/Dashboard/index';
 import Landing from './pages/Landing';
+import About from './pages/About';
+import ContactForm from './pages/ContactForm';
+import WorkoutPlan from './pages/Dashboard/index';
+import AddWorkout from './pages/AddWorkout';
 
 
 
 function App() {
   const {state} = useStore()!;
-
+  
   return (
     <>
       {state.loading && (
@@ -28,6 +32,10 @@ function App() {
         <Routes>
           <Route path="/" element={<Landing />} />
 
+          <Route path="/about" element={<About />} />
+
+          <Route path="/contact" element={<ContactForm />} />
+
           <Route path="/register" element={(
             <ProtectRoute>
               <AuthForm isLogin={false} />
@@ -39,10 +47,16 @@ function App() {
             </ProtectRoute>
           )} />
 
-
-          <Route path="/dashboard" element={(
+          <Route path="/workout" element={(
             <ProtectRoute>
-              <Dashboard />
+              <AddWorkout />
+            </ProtectRoute>
+
+          )} />
+
+          <Route path="/plan" element={(
+            <ProtectRoute>
+              <WorkoutPlan />
             </ProtectRoute>
           )} />
         </Routes>
