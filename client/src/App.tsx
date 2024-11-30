@@ -12,6 +12,7 @@ import About from './pages/About';
 import ContactForm from './pages/ContactForm';
 import WorkoutPlan from './pages/Dashboard/index';
 import AddWorkout from './pages/AddWorkout';
+import WorkoutSearch from './components/WorkoutSearch';
 
 
 
@@ -59,6 +60,7 @@ function App() {
               <WorkoutPlan />
             </ProtectRoute>
           )} />
+          <Route path="/search" element={<WorkoutSearch />} />
         </Routes>
       </main>
 
