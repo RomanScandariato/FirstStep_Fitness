@@ -2,7 +2,20 @@ html, body, #root {
   height: 100%;
   background-color: #ECE4DA;
   color: #574B3F;
-  
+}
+
+@font-face {
+  font-family: 'ModernFont';
+  src: url('../public/images/fonts/ModernFont.ttf');
+}
+
+@font-face {
+  font-family: 'Almarai';
+  src: url('../public/images/fonts/Almarai.ttf');
+}
+
+body {
+  font-family: 'Almarai' !important;
 }
 
 .loading-overlay {
@@ -23,6 +36,7 @@ nav a:hover:not(.navbar-brand) {
 .navbar-brand {
   font-size: 25px !important;
   color: #574B3F !important;
+  font-family: 'ModernFont' !important;
 }
 
 .dropdown-menu.show {
@@ -60,7 +74,8 @@ nav a:hover:not(.navbar-brand) {
   position: relative;
   top: -450px;
   animation: slideIn 2s ease-in-out;
-  font-size: 5rem;
+  font-size: 4.25rem;
+  font-family: 'ModernFont' !important;
 }
 
 @keyframes slideInLeft {
@@ -99,6 +114,17 @@ nav a:hover:not(.navbar-brand) {
   height: 100%;
 }
 
+@keyframes fadeIn {
+  from {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
 .aboutimg {
   background-image: linear-gradient(rgba(41, 41, 41, 0.7), rgba(0, 0, 0, 0.7)), url('/images/about_page_image.png');
   background-size: cover;
@@ -112,6 +138,7 @@ nav a:hover:not(.navbar-brand) {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  animation: fadeIn 2s ease-in-out;
 }
 .about-text h1 {
   font-size: 4rem;
@@ -141,16 +168,8 @@ nav a:hover:not(.navbar-brand) {
   color: #b5b4b4;
 }
 
-
-@keyframes fadeIn {
-  from {
-    transform: translateY(0);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
+.who-are-we-text {
+  font-family: 'ModernFont' !important;
 }
 
 .workout-form {

@@ -42,7 +42,7 @@ function ContactForm() {
             padding: '20px',
             borderRadius: '0px',
         }}>
-            <form onSubmit={onSubmit} className="bg-white p-4 rounded shadow" style={{ width: '300px', backgroundColor: 'rgba(0, 0, 0, 0.5)', }}>
+            <form onSubmit={onSubmit} className="bg-white p-4 rounded shadow" style={{ width: '400px', backgroundColor: 'rgba(0, 0, 0, 0.5)', }}>
                 <div className="mb-3">
                     <label htmlFor="firstName" className="form-label fw-bold">First Name</label>
                     <input
