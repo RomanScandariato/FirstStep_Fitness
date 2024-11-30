@@ -3,7 +3,7 @@ function About() {
         <section>
           <div className="aboutimg">
             <div className="ms-auto about-text">
-              <h1>Who are we?</h1>
+              <h1 className="who-are-we-text">Who are we?</h1>
               <p className="about-text-wrap mt-4 fs-5">
                 We believe that everyone's fitness journey is unique, and our mission is to empower you to design workout routines that fit your goals, preferences, and lifestyle. Whether you're a seasoned athlete, a casual gym-goer, or just beginning your fitness journey, we provide the tools you need to take full control of your workouts.
               </p>

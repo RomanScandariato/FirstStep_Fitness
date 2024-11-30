@@ -67,7 +67,7 @@ function AuthForm({isLogin}: {isLogin: boolean}) {
   }}>
     <Container>
       <Form onSubmit={handleSubmit} style={{width: '500px'}} className="mx-auto mt-5">
-        <h2 className="text-white text-center mt-3">{isLogin ? 'Log In' : 'Register'}</h2>
+        <h2 className="auth-title text-white text-center mt-3">{isLogin ? 'Log In' : 'Register'}</h2>
 
         {formData.errorMessage && (
           <p className="text-center text-danger">{formData.errorMessage}</p>
