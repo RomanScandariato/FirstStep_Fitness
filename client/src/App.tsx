@@ -60,7 +60,9 @@ function App() {
               <WorkoutPlan />
             </ProtectRoute>
           )} />
-          <Route path="/search" element={<WorkoutSearch />} />
+          <Route path="/search" element={
+            <WorkoutSearch query="defaultQuery" />
+          } />
         </Routes>
       </main>
 
