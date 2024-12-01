@@ -9,7 +9,7 @@ function WorkoutPlan() {
 
   return (
     <Container>
-    <h1>HEYYYY</h1>
+      <h1 className="workout-plan-header text-center my-5">My Workout Plan</h1>
       
     </Container>
   )
