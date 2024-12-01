@@ -3,7 +3,7 @@ import { useQuery, useMutation } from '@apollo/client';
 import { SEARCH_EXERCISES } from '../graphql/queries';
 import { SAVE_WORKOUT } from '../graphql/mutations';
 
-function WorkoutSearch({ query }: { query: string }) {
+function WorkoutSearch({ query, isLoggedIn }: { query: string; isLoggedIn: boolean }) {
   const [selectedExercises, setSelectedExercises] = useState<any[]>([]);
   const { loading, data, refetch } = useQuery(SEARCH_EXERCISES, {
     variables: { muscle: query },
@@ -30,16 +30,21 @@ function WorkoutSearch({ query }: { query: string }) {
 
   return (
     <div>
+      <h1 className="exercise-title">Chest Exercises</h1>
       {loading && <p>Loading...</p>}
       {data && (
-        <ul>
+        <div className="exercise-list" style={{ paddingBottom: '20px' }}>
           {data.searchExercises.map((exercise: any) => (
-            <li key={exercise.name}>
-              {exercise.name} - {exercise.muscle}
-              <button onClick={() => handleSelectExercise(exercise)}>Select</button>
-            </li>
+            <div key={exercise.name} className="exercise-card">
+              <h4>{exercise.name}</h4>
+              <p>Muscle: {exercise.muscle}</p>
+              <p>Difficulty: {exercise.difficulty}</p>
+              <button onClick={() => handleSelectExercise(exercise)}>
+                {isLoggedIn ? 'Add to Workout Plan' : 'Log in to Add'}
+              </button>
+            </div>
           ))}
-        </ul>
+        </div>
       )}
       {selectedExercises.length > 0 && (
         <div>

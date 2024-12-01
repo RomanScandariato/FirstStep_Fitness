@@ -46,23 +46,25 @@ function Landing() {
         <Col  xs="12">
           <h1 className="text-center landing-text">Elevate Your Fitness Journey</h1>
 
-          <form ref={searchFormRef} className="d-flex text-center justify-content-center mt-3" onSubmit={handleSearch}>
-            <input
-              className="search-form-control form me-2"
-              type="search"
-              placeholder="Search For Exercises"
-              aria-label="Search"
-              onChange={handleInputChange}
-            />
-            <button className="btn btn-outline-dark" type="submit">Search</button>
-          </form>
+          <div className="search-form-container">
+            <form ref={searchFormRef} className="d-flex text-center justify-content-center mt-3" onSubmit={handleSearch}>
+              <input
+                className="search-form-control form me-2"
+                type="search"
+                placeholder="Search For Exercises"
+                aria-label="Search"
+                onChange={handleInputChange}
+              />
+              <button className="search-button" type="submit">Search</button>
+            </form>
+          </div>
+
+          <p className="d-flex text-center justify-content-center">Ex: Biceps, Chest, Quadriceps</p>
 
         </Col>
       </Row>
-      <WorkoutSearch query={query} />
+      <WorkoutSearch query={query} isLoggedIn={false} />
       <Container>
-
-      <h1>HEYYYY</h1>
 
       </Container>
     </Container>
