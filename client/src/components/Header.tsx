@@ -20,6 +20,8 @@ function Header() {
 
     await logoutUser();
 
+    localStorage.removeItem('workout_token');
+
     setState((oldState) => ({
       ...oldState,
       user: null
@@ -29,30 +31,34 @@ function Header() {
   }
 
   return (
-    <Navbar bg="light" data-bs-theme="light">
-      <Container className="nav-wrap">
-        <Navbar.Brand as={NavLink} to="/">FirstStep_Fitness</Navbar.Brand>
-        <Nav className="ms-auto">
-          <Nav.Link as={NavLink} to="/">Home</Nav.Link>
+    <Container>
+      <Navbar style={{ paddingTop: '18px', paddingBottom: '18px' }}>
+        <Container className="nav-wrap">
+          <Navbar.Brand as={NavLink} to="/">FirstStep Fitness</Navbar.Brand>
+          <Nav className="ms-auto">
+            <Nav.Link as={NavLink} to="/">Home</Nav.Link>
 
-          {state.user ? (
-            <>
-              <Nav.Link as={NavLink} to="/dashboard">Dashboard</Nav.Link>
-              <Nav.Link as={NavLink} to="/workout">Add Workout</Nav.Link>
-              <NavDropdown title="Profile Menu">
-                <NavDropdown.ItemText className="border-bottom mb-2">Welcome, {state.user.username}</NavDropdown.ItemText>
-                <NavDropdown.Item onClick={handleLogout} href="/logout">Log Out</NavDropdown.Item>
-              </NavDropdown>
-            </>
-          ) : (
-            <>
-              <Nav.Link as={NavLink} to="/register">Register</Nav.Link>
-              <Nav.Link as={NavLink} to="/login">Log In</Nav.Link>
-            </>
-          )}
-        </Nav>
-      </Container>
-    </Navbar>
+            {state.user ? (
+              <>
+                <Nav.Link as={NavLink} to="/plan">My Workout Plan</Nav.Link>
+                <Nav.Link as={NavLink} to="/workout">Add Workout</Nav.Link>
+                <NavDropdown title="Profile Menu">
+                  <NavDropdown.ItemText className="border-bottom mb-2">Welcome, {state.user.username}</NavDropdown.ItemText>
+                  <NavDropdown.Item onClick={handleLogout} href="/logout">Log Out</NavDropdown.Item>
+                </NavDropdown>
+              </>
+            ) : (
+              <>
+                <Nav.Link as={NavLink} to="/about">About</Nav.Link>
+                <Nav.Link as={NavLink} to="/contact">Contact</Nav.Link>
+                <Nav.Link as={NavLink} to="/register">Register</Nav.Link>
+                <Nav.Link as={NavLink} to="/login">Log In</Nav.Link>
+              </>
+            )}
+          </Nav>
+        </Container>
+      </Navbar>
+    </Container>
   )
 }
 

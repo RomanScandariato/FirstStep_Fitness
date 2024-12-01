@@ -3,16 +3,16 @@ import { Container } from 'react-bootstrap';
 
 
 
-function Dashboard() {
+function WorkoutPlan() {
 
 
 
   return (
     <Container>
-    
+    <h1>HEYYYY</h1>
       
     </Container>
   )
 }
 
-export default Dashboard;
+export default WorkoutPlan;
