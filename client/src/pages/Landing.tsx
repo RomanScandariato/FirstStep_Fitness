@@ -1,10 +1,20 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Row, Col, Container } from 'react-bootstrap';
 import WorkoutSearch from '../components/WorkoutSearch';
 
 function Landing() {
   const searchFormRef = useRef<HTMLFormElement>(null);
   const [query, setQuery] = React.useState('');
+  const [searchQuery, setSearchQuery] = useState('');
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setQuery(e.target.value);
+  };
+
+  const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setSearchQuery(query); // Set the search query when the form is submitted
+  };
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -28,16 +38,6 @@ function Landing() {
       }
     };
   }, []);
-
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setQuery(e.target.value);
-  };
-
-  const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    // Trigger the search in WorkoutSearch component
-  };
-
 
   return (
     <Container>
@@ -63,7 +63,7 @@ function Landing() {
 
         </Col>
       </Row>
-      <WorkoutSearch query={query} isLoggedIn={false} />
+      <WorkoutSearch query={searchQuery} isLoggedIn={false} />
       <Container>
 
       </Container>

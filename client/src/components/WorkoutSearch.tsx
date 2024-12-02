@@ -30,7 +30,7 @@ function WorkoutSearch({ query, isLoggedIn }: { query: string; isLoggedIn: boole
 
   return (
     <div>
-      <h1 className="exercise-title">Chest Exercises</h1>
+      <h1 className="exercise-title">{query ? `${query.charAt(0).toUpperCase() + query.slice(1)} Exercises` : 'Exercises'}</h1>
       {loading && <p>Loading...</p>}
       {data && (
         <div className="exercise-list" style={{ paddingBottom: '20px' }}>
