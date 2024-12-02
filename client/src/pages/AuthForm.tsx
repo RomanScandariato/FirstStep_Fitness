@@ -83,7 +83,7 @@ function AuthForm({isLogin}: {isLogin: boolean}) {
         <Form.Group  className="mb-3" controlId="formBasicEmail">
           <Form.Label className="text-white">Email address</Form.Label>
           <Form.Control name="email" onChange={handleInputChange} value={formData.email} type="email" placeholder="Enter email" />
-          <Form.Text className="text-white">
+          <Form.Text className="text-white opacity-50">
             We'll never share your email with anyone else.
           </Form.Text>
         </Form.Group>

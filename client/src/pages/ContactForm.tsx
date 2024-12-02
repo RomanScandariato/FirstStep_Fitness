@@ -79,7 +79,7 @@ function ContactForm() {
                         onChange={(e) => setEmail(e.target.value)}
                         required
                     />
-                    <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
+                    <div id="emailHelp" className="form-text opacity-50">We'll never share your email with anyone else.</div>
                 </div>
                 <div className="mb-3">
                     <label htmlFor="exampleFormControlTextarea1" className="form-label fw-bold">Message</label>

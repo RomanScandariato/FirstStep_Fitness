@@ -59,7 +59,7 @@ function Landing() {
             </form>
           </div>
 
-          <p className="d-flex text-center justify-content-center">Ex: Biceps, Chest, Quadriceps</p>
+          <p className="d-flex text-center justify-content-center mt-1 opacity-50">Ex: Biceps, Chest, Quadriceps</p>
 
         </Col>
       </Row>
