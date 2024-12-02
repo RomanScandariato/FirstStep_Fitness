@@ -52,6 +52,47 @@ const resolvers = {
                 console.error('Error adding workout:', error);
                 throw new Error('Failed to add workout');
             }
+        },
+        // this was added for the delete button
+        async deleteExercise(_, { id }, context) {
+            if (!context.req.user) {
+                throw new GraphQLError('You must be logged in to delete a workout');
+            }
+            try {
+                const exercise = await Exercise.findById(id);
+                if (!exercise) {
+                    throw new GraphQLError('Exercise not found');
+                }
+                await Exercise.findByIdAndDelete(id);
+                context.req.user.exercises = context.req.user.exercises.filter((exerciseId) => exerciseId !== id);
+                await context.req.user.save();
+                return { success: true, message: 'Exercise deleted successfully' };
+            }
+            catch (error) {
+                console.error('Error deleting exercise:', error);
+                throw new Error('Failed to delete exercise');
+            }
+        },
+        async updateExercise(_, { id, name, muscle, difficulty, instructions }, context) {
+            if (!context.req.user) {
+                throw new GraphQLError('You must be logged in to update a workout');
+            }
+            try {
+                const exercise = await Exercise.findById(id);
+                if (!exercise) {
+                    throw new GraphQLError('Exercise not found');
+                }
+                exercise.name = name;
+                exercise.muscle = muscle;
+                exercise.difficulty = difficulty;
+                exercise.instructions = instructions;
+                await exercise.save();
+                return { success: true, message: 'Exercise updated successfully' };
+            }
+            catch (error) {
+                console.error('Error updating exercise:', error);
+                throw new Error('Failed to update exercise');
+            }
         }
     }
 };

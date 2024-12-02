@@ -25,7 +25,7 @@ export const SEARCH_EXERCISES = gql`
 export const GET_USER_EXERCISES = gql`
   query GetUserExercises {
     getUserExercises {
-      name
+        _id
         name
         muscle
         difficulty

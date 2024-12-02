@@ -57,7 +57,7 @@ function AddWorkout() {
   return (
     <section className='centered-section'>
       <Form className='workout-form' onSubmit={handleSubmit}>
-        <h2 className='form-heading'>Add Workout to Plan</h2>
+        <h2 className='form-heading'>Add Exercise to Plan</h2>
         <Row className="mb-3">
           <Form.Group as={Col} controlId="formGridName">
             <Form.Control type="text" placeholder="Ex: Bench Press" name="name" onChange={handleInputChange} className="form-control-placeholder" />
