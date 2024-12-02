@@ -8,8 +8,8 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 
-import { ADD_WORKOUT } from '../graphql/mutations'; 
-import { GET_EXERCISES } from '../graphql/queries';
+import { ADD_EXERCISE } from '../graphql/mutations'; 
+import { GET_USER_EXERCISES } from '../graphql/queries';
 
 
 const initialFormData = {
@@ -25,8 +25,8 @@ const initialFormData = {
 function AddWorkout() {
   const [formData, setFormData] = useState(initialFormData);
   
-  const [addWorkout] = useMutation(ADD_WORKOUT, {
-    refetchQueries: [{ query: GET_EXERCISES }],
+  const [addExercise] = useMutation(ADD_EXERCISE, {
+    refetchQueries: [{ query: GET_USER_EXERCISES }],
   });
   const navigate = useNavigate();
 
@@ -41,7 +41,7 @@ function AddWorkout() {
     event.preventDefault();
 
     try {
-      await addWorkout({ variables: formData });
+      await addExercise({ variables: formData });
       setFormData(initialFormData);
      
       navigate('/plan');

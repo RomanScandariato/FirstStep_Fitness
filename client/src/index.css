@@ -88,40 +88,91 @@ nav a:hover:not(.navbar-brand) {
   font-family: 'ModernFont' !important;
 }
 
-@keyframes slideInLeft {
-  from {
-    transform: translateX(-100%);
-    opacity: 0;
-  }
-  to {
-    transform: translateX(0);
-    opacity: 1;
-  }
-}
-
-.animate-slide-in-left {
-  animation: slideInLeft 2s ease-in-out;
-}
-
 .search-form-control {
+  border-radius: 50px;
+  padding: 10px 20px;
+  border: 2px solid #574B3F;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.search-form-control:focus {
+  border-color: #574B3F;
+  box-shadow: 0 0 10px rgba(87, 75, 63, 0.5);
+}
+
+.search-button {
+  border-radius: 50px;
+  padding: 10px 20px;
+  background: linear-gradient(45deg, #574B3F, #ECE4DA);
+  border: 2px solid #574B3F;
+  color: #fff;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.search-button:hover {
+  background: linear-gradient(45deg, #ECE4DA, #574B3F);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.exercise-title {
+  text-align: center;
+  font-size: 3rem;
+  margin-bottom: 20px;
+  font-family: 'ModernFont' !important;
+}
+
+.exercise-list {
   display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
   justify-content: center;
-  align-items: center;
-  width: 30;
 }
 
-.landing-post {
-  position: relative;
+.exercise-card {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: calc(50% - 20px);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.landing-post:before {
-  content: '';
-  position: absolute;
-  left: -10px;
-  top: 0;
-  background: #D2E887;
-  width: 7px;
-  height: 100%;
+.exercise-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.exercise-card h4 {
+  font-size: 1.5rem;
+  color: #574B3F;
+}
+
+.exercise-card p {
+  font-size: 1rem;
+  color: #574B3F;
+}
+
+.exercise-card button {
+  background-color: #574B3F;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.exercise-card button:hover {
+  background-color: #ECE4DA;
+  color: #574B3F;
+}
+
+.workout-plan-header {
+  font-family: 'ModernFont' !important;
 }
 
 @keyframes fadeIn {

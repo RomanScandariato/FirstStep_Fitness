@@ -72,7 +72,7 @@ const auth_resolvers = {
         },
         // Log out user
         logoutUser(_, __, context) {
-            context.res.clearCookie('pet_token');
+            context.res.clearCookie('workout_token');
             return {
                 message: 'Logged out successfully!'
             };

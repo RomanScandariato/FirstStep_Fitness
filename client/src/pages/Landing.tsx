@@ -1,10 +1,21 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Row, Col, Container } from 'react-bootstrap';
 import WorkoutSearch from '../components/WorkoutSearch';
 
 function Landing() {
   const searchFormRef = useRef<HTMLFormElement>(null);
   const [query, setQuery] = React.useState('');
+  const [searchQuery, setSearchQuery] = useState('');
+ 
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setQuery(e.target.value);
+  };
+
+  const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setSearchQuery(query);
+  };
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -29,16 +40,6 @@ function Landing() {
     };
   }, []);
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setQuery(e.target.value);
-  };
-
-  const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    // Trigger the search in WorkoutSearch component
-  };
-
-
   return (
     <Container>
       <Row>
@@ -46,23 +47,25 @@ function Landing() {
         <Col  xs="12">
           <h1 className="text-center landing-text">Elevate Your Fitness Journey</h1>
 
-          <form ref={searchFormRef} className="d-flex text-center justify-content-center mt-3" onSubmit={handleSearch}>
-            <input
-              className="search-form-control form me-2"
-              type="search"
-              placeholder="Search For Exercises"
-              aria-label="Search"
-              onChange={handleInputChange}
-            />
-            <button className="btn btn-outline-dark" type="submit">Search</button>
-          </form>
+          <div className="search-form-container">
+            <form ref={searchFormRef} className="d-flex text-center justify-content-center mt-3" onSubmit={handleSearch}>
+              <input
+                className="search-form-control form me-2"
+                type="search"
+                placeholder="Search For Exercises"
+                aria-label="Search"
+                onChange={handleInputChange}
+              />
+              <button className="search-button" type="submit">Search</button>
+            </form>
+          </div>
+
+          <p className="d-flex text-center justify-content-center mt-1 opacity-50">Ex: Biceps, Chest, Quadriceps</p>
 
         </Col>
       </Row>
-      <WorkoutSearch query={query} />
+      <WorkoutSearch query={searchQuery} />
       <Container>
-
-      <h1>HEYYYY</h1>
 
       </Container>
     </Container>

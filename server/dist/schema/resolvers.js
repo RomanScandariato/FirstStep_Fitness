@@ -1,22 +1,38 @@
 import dotenv from 'dotenv';
 import axios from 'axios';
 import Exercise from '../models/Exercise.js';
+import User from '../models/User.js';
 dotenv.config();
 import auth_resolvers from './resolvers/auth_resolvers.js';
 import { GraphQLError } from 'graphql';
 const resolvers = {
     Query: {
         ...auth_resolvers.Query,
-        async searchExercises(_, { muscle }) {
+        async searchExercises(_, { muscle }, context) {
             try {
                 const response = await axios.get(`https://api.api-ninjas.com/v1/exercises?muscle=${muscle}`, {
                     headers: { 'X-Api-Key': process.env.API_NINJAS_KEY }
                 });
-                return response.data;
+                const user = await User.findById(context.req.user._id).populate('exercises');
+                const exercises = response.data.filter((exercise) => !user?.exercises.find((e) => e.name === exercise.name));
+                return exercises;
             }
             catch (error) {
                 console.error('Error fetching exercises:', error);
                 throw new Error('Failed to fetch exercises');
+            }
+        },
+        async getUserExercises(_, __, context) {
+            if (!context.req.user) {
+                throw new GraphQLError('You must be logged in to view your workouts');
+            }
+            try {
+                await context.req.user.populate('exercises');
+                return context.req.user.exercises;
+            }
+            catch (error) {
+                console.error('Error fetching user workouts:', error);
+                throw new Error('Failed to fetch user workouts');
             }
         }
     },

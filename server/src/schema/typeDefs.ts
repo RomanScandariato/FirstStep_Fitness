@@ -10,14 +10,9 @@ const typeDefs = gql`
   }
 
   type Response {
-    _id: ID
     user: User
     message: String
-    errors: [String]
-    name: String
-    muscle: String
-    difficulty: String
-    instructions: String
+    exercise: Exercise
   }
 
   type Exercise {
