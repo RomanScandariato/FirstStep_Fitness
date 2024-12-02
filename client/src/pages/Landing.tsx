@@ -1,10 +1,21 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Row, Col, Container } from 'react-bootstrap';
 import WorkoutSearch from '../components/WorkoutSearch';
 
 function Landing() {
   const searchFormRef = useRef<HTMLFormElement>(null);
   const [query, setQuery] = React.useState('');
+  const [searchQuery, setSearchQuery] = useState('');
+  const isLoggedIn = true;
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setQuery(e.target.value);
+  };
+
+  const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setSearchQuery(query);
+  };
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -29,16 +40,6 @@ function Landing() {
     };
   }, []);
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setQuery(e.target.value);
-  };
-
-  const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    // Trigger the search in WorkoutSearch component
-  };
-
-
   return (
     <Container>
       <Row>
@@ -59,11 +60,11 @@ function Landing() {
             </form>
           </div>
 
-          <p className="d-flex text-center justify-content-center">Ex: Biceps, Chest, Quadriceps</p>
+          <p className="d-flex text-center justify-content-center mt-1 opacity-50">Ex: Biceps, Chest, Quadriceps</p>
 
         </Col>
       </Row>
-      <WorkoutSearch query={query} isLoggedIn={false} />
+      <WorkoutSearch query={searchQuery} isLoggedIn={isLoggedIn} />
       <Container>
 
       </Container>

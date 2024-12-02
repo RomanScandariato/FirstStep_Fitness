@@ -88,21 +88,6 @@ nav a:hover:not(.navbar-brand) {
   font-family: 'ModernFont' !important;
 }
 
-@keyframes slideInLeft {
-  from {
-    transform: translateX(-100%);
-    opacity: 0;
-  }
-  to {
-    transform: translateX(0);
-    opacity: 1;
-  }
-}
-
-.animate-slide-in-left {
-  animation: slideInLeft 2s ease-in-out;
-}
-
 .search-form-control {
   border-radius: 50px;
   padding: 10px 20px;
