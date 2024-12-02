@@ -6,6 +6,7 @@ function Landing() {
   const searchFormRef = useRef<HTMLFormElement>(null);
   const [query, setQuery] = React.useState('');
   const [searchQuery, setSearchQuery] = useState('');
+  const isLoggedIn = true;
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setQuery(e.target.value);
@@ -13,7 +14,7 @@ function Landing() {
 
   const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setSearchQuery(query); // Set the search query when the form is submitted
+    setSearchQuery(query);
   };
 
   useEffect(() => {
@@ -63,7 +64,7 @@ function Landing() {
 
         </Col>
       </Row>
-      <WorkoutSearch query={searchQuery} isLoggedIn={false} />
+      <WorkoutSearch query={searchQuery} isLoggedIn={isLoggedIn} />
       <Container>
 
       </Container>

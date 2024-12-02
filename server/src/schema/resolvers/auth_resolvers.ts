@@ -94,7 +94,7 @@ const auth_resolvers = {
 
     // Log out user
     logoutUser(_: any, __: any, context: Context) {
-      context.res.clearCookie('pet_token');
+      context.res.clearCookie('workout_token');
 
       return {
         message: 'Logged out successfully!'
