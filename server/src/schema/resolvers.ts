@@ -1,10 +1,11 @@
 import dotenv from 'dotenv';
 import axios from 'axios';
-import Workout from '../models/Workout.js';
+import Exercise from '../models/Exercise.js';
 
 dotenv.config();
 
 import auth_resolvers from './resolvers/auth_resolvers.js';
+import { GraphQLError } from 'graphql';
 
 
 
@@ -26,17 +27,24 @@ const resolvers = {
 
   Mutation: {
     ...auth_resolvers.Mutation,
-    async saveWorkout(_: any, { name, exercises }: { name: string, exercises: any[] }) {
-      try {
-        const workout = new Workout({ name, exercises });
-        await workout.save();
-        return workout;
-      } catch (error) {
-        console.error('Error saving workout:', error);
-        throw new Error('Failed to save workout');
-      }
+  
+  async addExercise(_: any, { name, muscle, difficulty, instructions }: { name: string, muscle: string, difficulty: string, instructions: string }, context: any) {
+    if (!context.req.user) {
+      throw new GraphQLError('You must be logged in to add a workout');
+    }
+    try {
+      const exercise = await Exercise.create({ name, muscle, difficulty, instructions });
+      context.req.user.exercises.push(exercise._id);
+      await context.req.user.save();
+     
+
+      return { success: true, message: 'Workout added successfully' };
+    } catch (error) {
+      console.error('Error adding workout:', error);
+      throw new Error('Failed to add workout');
     }
   }
+}
 };
 
 export default resolvers;

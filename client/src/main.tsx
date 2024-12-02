@@ -5,6 +5,7 @@ import { onError } from '@apollo/client/link/error';
 
 import { StoreProvider } from './store/index.tsx';
 
+
 import { BrowserRouter } from 'react-router-dom';
 
 import './index.css';
@@ -37,7 +38,7 @@ createRoot(document.getElementById('root')!).render(
     <ApolloProvider client={client}>
       <StoreProvider>
         <BrowserRouter>
-          <App />
+            <App />
         </BrowserRouter>
       </StoreProvider>
     </ApolloProvider>

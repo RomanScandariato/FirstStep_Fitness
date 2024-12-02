@@ -23,3 +23,16 @@ export const SEARCH_EXERCISES = gql`
     }
   }
 `;
+
+export const GET_EXERCISES = gql`
+  query GetExercises {
+    getExercises {
+      name
+        name
+        muscle
+        difficulty
+        instructions
+      }
+    }
+  
+`;

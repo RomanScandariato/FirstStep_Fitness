@@ -9,39 +9,37 @@ const typeDefs = gql `
   }
 
   type Response {
+    _id: ID
     user: User
     message: String
     errors: [String]
+    name: String
+    muscle: String
+    difficulty: String
+    instructions: String
   }
 
   type Exercise {
+    _id: ID
     name: String
-    type: String
     muscle: String
-    equipment: String
     difficulty: String
     instructions: String
   }
 
   input ExerciseInput {
     name: String
-    type: String
     muscle: String
-    equipment: String
     difficulty: String
     instructions: String
   }
 
-  type Workout {
-    _id: ID
-    name: String
-    exercises: [Exercise]
-  }
 
   type Query {
     # Auth Queries
     getUser: Response
     searchExercises(muscle: String): [Exercise]
+    getUserExercises: [Exercise]
 
   }
 
@@ -50,7 +48,8 @@ const typeDefs = gql `
     registerUser(username: String, email: String, password: String): Response
     loginUser(email: String, password: String): Response
     logoutUser: Response
-    saveWorkout(name: String, exercises: [ExerciseInput]): Response
+    # Exercise Resolvers
+    addExercise(name: String, muscle: String, difficulty: String, instructions: String): Response
   }
 `;
 export default typeDefs;

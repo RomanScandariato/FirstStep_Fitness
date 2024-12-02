@@ -51,3 +51,16 @@ export const SAVE_WORKOUT = gql`
     }
   }
 `;
+
+
+export const ADD_WORKOUT = gql`
+  mutation AddWorkout($name: String!, $muscle: String!, $difficulty: String!, $instructions: String!) {
+    addWorkout(name: $name, muscle: $muscle, difficulty: $difficulty, instructions: $instructions) {
+      _id
+      name
+      muscle
+      difficulty
+      instructions
+    }
+  }
+`;
