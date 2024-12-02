@@ -12,6 +12,7 @@ const typeDefs = gql `
     user: User
     message: String
     exercise: Exercise
+    errors: [String]
   }
 
   type Exercise {
