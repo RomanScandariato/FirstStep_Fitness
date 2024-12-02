@@ -19,7 +19,11 @@ const userSchema = new Schema({
         type: String,
         required: true,
         minLength: [6, 'Your password must be at least 6 characters in length']
-    }
+    },
+    exercises: [{
+            type: Schema.Types.ObjectId,
+            ref: 'Exercise'
+        }]
 }, {
     toJSON: {
         transform(_, user) {

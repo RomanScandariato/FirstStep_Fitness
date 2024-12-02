@@ -6,7 +6,7 @@ function Landing() {
   const searchFormRef = useRef<HTMLFormElement>(null);
   const [query, setQuery] = React.useState('');
   const [searchQuery, setSearchQuery] = useState('');
-  const isLoggedIn = true;
+ 
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setQuery(e.target.value);
@@ -64,7 +64,7 @@ function Landing() {
 
         </Col>
       </Row>
-      <WorkoutSearch query={searchQuery} isLoggedIn={isLoggedIn} />
+      <WorkoutSearch query={searchQuery} />
       <Container>
 
       </Container>

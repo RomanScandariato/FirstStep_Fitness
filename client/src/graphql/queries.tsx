@@ -15,11 +15,22 @@ export const SEARCH_EXERCISES = gql`
   query SearchExercises($muscle: String!) {
     searchExercises(muscle: $muscle) {
       name
-      type
       muscle
-      equipment
       difficulty
       instructions
     }
   }
+`;
+
+export const GET_USER_EXERCISES = gql`
+  query GetUserExercises {
+    getUserExercises {
+      name
+        name
+        muscle
+        difficulty
+        instructions
+      }
+    }
+  
 `;

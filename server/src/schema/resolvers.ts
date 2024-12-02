@@ -1,42 +1,68 @@
 import dotenv from 'dotenv';
 import axios from 'axios';
-import Workout from '../models/Workout.js';
+import Exercise from '../models/Exercise.js';
+import User from '../models/User.js';
 
 dotenv.config();
 
 import auth_resolvers from './resolvers/auth_resolvers.js';
+import { GraphQLError } from 'graphql';
 
 
 
 const resolvers = {
   Query: {
     ...auth_resolvers.Query,
-    async searchExercises(_: any, { muscle }: { muscle: string }) {
+    async searchExercises(_: any, { muscle }: { muscle: string }, context: any) {
+
       try {
         const response = await axios.get(`https://api.api-ninjas.com/v1/exercises?muscle=${muscle}`, {
           headers: { 'X-Api-Key': process.env.API_NINJAS_KEY }
         });
-        return response.data;
+        const user = await User.findById(context.req.user._id).populate('exercises');
+        
+        const exercises = response.data.filter((exercise: any) => !user?.exercises.find((e: any) => e.name === exercise.name));
+
+        return exercises;
       } catch (error) {
         console.error('Error fetching exercises:', error);
         throw new Error('Failed to fetch exercises');
+      }
+    },
+    async getUserExercises (_: any, __: any, context: any) {
+      if (!context.req.user) {
+        throw new GraphQLError('You must be logged in to view your workouts');
+      }
+      try {
+        await context.req.user.populate('exercises');
+        return context.req.user.exercises;
+      } catch (error) {
+        console.error('Error fetching user workouts:', error);
+        throw new Error('Failed to fetch user workouts');
       }
     }
   },
 
   Mutation: {
     ...auth_resolvers.Mutation,
-    async saveWorkout(_: any, { name, exercises }: { name: string, exercises: any[] }) {
-      try {
-        const workout = new Workout({ name, exercises });
-        await workout.save();
-        return workout;
-      } catch (error) {
-        console.error('Error saving workout:', error);
-        throw new Error('Failed to save workout');
-      }
+  
+  async addExercise(_: any, { name, muscle, difficulty, instructions }: { name: string, muscle: string, difficulty: string, instructions: string }, context: any) {
+    if (!context.req.user) {
+      throw new GraphQLError('You must be logged in to add a workout');
+    }
+    try {
+      const exercise = await Exercise.create({ name, muscle, difficulty, instructions });
+      context.req.user.exercises.push(exercise._id);
+      await context.req.user.save();
+     
+
+      return { success: true, message: 'Workout added successfully' };
+    } catch (error) {
+      console.error('Error adding workout:', error);
+      throw new Error('Failed to add workout');
     }
   }
+}
 };
 
 export default resolvers;

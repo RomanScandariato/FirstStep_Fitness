@@ -1,32 +1,34 @@
-import { useEffect, useState } from 'react';
+import { useEffect} from 'react';
 import { useQuery, useMutation } from '@apollo/client';
 import { SEARCH_EXERCISES } from '../graphql/queries';
-import { SAVE_WORKOUT } from '../graphql/mutations';
+import { ADD_EXERCISE } from '../graphql/mutations';
+import { useStore } from '../store';
+import { useNavigate } from 'react-router-dom';
 
-function WorkoutSearch({ query, isLoggedIn }: { query: string; isLoggedIn: boolean }) {
-  const [selectedExercises, setSelectedExercises] = useState<any[]>([]);
+function WorkoutSearch({ query }: { query: string; }) {
   const { loading, data, refetch } = useQuery(SEARCH_EXERCISES, {
     variables: { muscle: query },
     skip: !query, // Skip the query initially
   });
-  const [saveWorkout] = useMutation(SAVE_WORKOUT);
+  const [addExercise] = useMutation(ADD_EXERCISE);
+  const navigate = useNavigate();
+  const { state } = useStore()!;
 
   useEffect(() => {
     if (query) {
       refetch({ muscle: query });
     }
-  }, [query, refetch]);
+  }, [query]);
 
-  const handleSaveWorkout = () => {
-    const workoutName = prompt('Enter a name for your workout:');
-    if (workoutName) {
-      saveWorkout({ variables: { name: workoutName, exercises: selectedExercises } });
+  const handleSaveExercise = (exercise: any) => {
+    if (!state.user) {
+      navigate('/login');
     }
+   
+    addExercise({ variables: exercise });
   };
 
-  const handleSelectExercise = (exercise: any) => {
-    setSelectedExercises([...selectedExercises, exercise]);
-  };
+
 
   return (
     <div>
@@ -39,24 +41,14 @@ function WorkoutSearch({ query, isLoggedIn }: { query: string; isLoggedIn: boole
               <h4>{exercise.name}</h4>
               <p>Muscle: {exercise.muscle}</p>
               <p>Difficulty: {exercise.difficulty}</p>
-              <button onClick={() => handleSelectExercise(exercise)}>
-                {isLoggedIn ? 'Add to Workout Plan' : 'Log in to Add'}
+              <button onClick={() => handleSaveExercise(exercise)}>
+                {state.user ? 'Add Exercise' : 'Log in to Add'}
               </button>
             </div>
           ))}
         </div>
       )}
-      {selectedExercises.length > 0 && (
-        <div>
-          <h3>Selected Exercises</h3>
-          <ul>
-            {selectedExercises.map((exercise: any, index: number) => (
-              <li key={index}>{exercise.name}</li>
-            ))}
-          </ul>
-          <button onClick={handleSaveWorkout}>Save Workout</button>
-        </div>
-      )}
+    
     </div>
   );
 }

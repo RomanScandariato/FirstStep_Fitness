@@ -11,7 +11,7 @@ import Landing from './pages/Landing';
 import About from './pages/About';
 import ContactForm from './pages/ContactForm';
 import WorkoutPlan from './pages/Dashboard/index';
-import AddWorkout from './pages/AddWorkout';
+import AddExercise from './pages/AddExercise';
 import WorkoutSearch from './components/WorkoutSearch';
 
 
@@ -50,7 +50,7 @@ function App() {
 
           <Route path="/workout" element={(
             <ProtectRoute>
-              <AddWorkout />
+              <AddExercise />
             </ProtectRoute>
 
           )} />
