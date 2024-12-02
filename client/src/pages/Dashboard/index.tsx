@@ -7,6 +7,7 @@ import { GET_USER_EXERCISES } from '../../graphql/queries';
 
 function WorkoutPlan() {
  
+// Need to refetch the query after adding a new workout
 const { loading, error, data } = useQuery(GET_USER_EXERCISES);
  
 
