@@ -41,7 +41,7 @@ function Header() {
             {state.user ? (
               <>
                 <Nav.Link as={NavLink} to="/plan">My Workout Plan</Nav.Link>
-                <Nav.Link as={NavLink} to="/workout">Add Workout</Nav.Link>
+                <Nav.Link as={NavLink} to="/workout">Add Exercise</Nav.Link>
                 <NavDropdown title="Profile Menu">
                   <NavDropdown.ItemText className="border-bottom mb-2">Welcome, {state.user.username}</NavDropdown.ItemText>
                   <NavDropdown.Item onClick={handleLogout} href="/logout">Log Out</NavDropdown.Item>

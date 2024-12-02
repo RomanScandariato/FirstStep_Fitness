@@ -13,6 +13,12 @@ const typeDefs = gql`
     user: User
     message: String
     exercise: Exercise
+    errors: [String]
+  }
+
+  type DeleteResponse{
+    success:Boolean!
+    message:String
   }
 
   type Exercise {
@@ -46,6 +52,8 @@ const typeDefs = gql`
     logoutUser: Response
     # Exercise Resolvers
     addExercise(name: String, muscle: String, difficulty: String, instructions: String): Response
+    deleteExercise(id: ID!): DeleteResponse
+    updateExercise(id: ID!, name: String, muscle: String, difficulty: String, instructions: String): Response
   }
 `;
 
