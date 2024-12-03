@@ -13,14 +13,11 @@ const typeDefs = gql `
     message: String
     exercise: Exercise
     errors: [String]
-<<<<<<< HEAD
-=======
   }
 
   type DeleteResponse{
     success:Boolean!
     message:String
->>>>>>> 6797aadc216ce1e70faca74ec317775907150c12
   }
 
   type Exercise {

@@ -10,12 +10,6 @@ import EditExercise from '../../components/EditExercise';
 
 
 function WorkoutPlan() {
-<<<<<<< HEAD
- 
-// Need to refetch the query after adding a new workout
-const { loading, error, data } = useQuery(GET_USER_EXERCISES);
- 
-=======
 
   const { loading, error, data, refetch } = useQuery(GET_USER_EXERCISES);
   const [showModal, setShowModal] = useState(false);
@@ -49,7 +43,6 @@ const { loading, error, data } = useQuery(GET_USER_EXERCISES);
     }
   };
 
->>>>>>> 6797aadc216ce1e70faca74ec317775907150c12
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;

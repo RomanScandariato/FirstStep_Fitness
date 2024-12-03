@@ -67,10 +67,6 @@ function Landing() {
         </Col>
       </Row>
       <WorkoutSearch query={searchQuery} />
-<<<<<<< HEAD
-      
-=======
->>>>>>> 6797aadc216ce1e70faca74ec317775907150c12
     </Container>
 
 
