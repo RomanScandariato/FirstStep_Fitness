@@ -1,4 +1,4 @@
-import { useEffect} from 'react';
+import { useEffect, useState } from 'react';
 import { useQuery, useMutation } from '@apollo/client';
 import { SEARCH_EXERCISES } from '../graphql/queries';
 import { ADD_EXERCISE } from '../graphql/mutations';
@@ -13,6 +13,7 @@ function WorkoutSearch({ query }: { query: string; }) {
   const [addExercise] = useMutation(ADD_EXERCISE);
   const navigate = useNavigate();
   const { state } = useStore()!;
+  const [addedExercise, setAddedExercise] = useState<string[]>([]);
 
   useEffect(() => {
     if (query) {
@@ -20,12 +21,17 @@ function WorkoutSearch({ query }: { query: string; }) {
     }
   }, [query]);
 
-  const handleSaveExercise = (exercise: any) => {
+  const handleSaveExercise = async (exercise: any) => {
     if (!state.user) {
       navigate('/login');
     }
-   
-    addExercise({ variables: exercise });
+
+    try {
+      await addExercise({ variables: exercise });
+      setAddedExercise([...addedExercise, exercise.name]);
+    } catch {
+      console.error('Failed to save exercise');
+    }
   };
 
 
@@ -41,14 +47,17 @@ function WorkoutSearch({ query }: { query: string; }) {
               <h4>{exercise.name}</h4>
               <p>Muscle: {exercise.muscle}</p>
               <p>Difficulty: {exercise.difficulty}</p>
-              <button onClick={() => handleSaveExercise(exercise)}>
-                {state.user ? 'Add Exercise' : 'Log in to Add'}
+              <button
+                onClick={() => handleSaveExercise(exercise)}
+                disabled={addedExercise.includes(exercise.name) || !state.user}
+              >
+                {!state.user ? 'Log in to Add' : addedExercise.includes(exercise.name) ? 'Added!' : 'Add Exercise'}
               </button>
             </div>
           ))}
         </div>
       )}
-    
+
     </div>
   );
 }

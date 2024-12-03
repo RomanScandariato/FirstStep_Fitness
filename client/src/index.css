@@ -33,7 +33,7 @@ nav a:hover:not(.navbar-brand) {
   text-decoration: underline;
 }
 
-.navbar-brand {
+.navbar-brand { 
   font-size: 25px !important;
   color: #574B3F !important;
   font-family: 'ModernFont' !important;
@@ -82,9 +82,19 @@ nav a:hover:not(.navbar-brand) {
   color: #fff;
   min-width: 50%;
   position: relative;
-  top: -450px;
+  top: -500px;
   animation: slideIn 2s ease-in-out;
   font-size: 4.25rem;
+  font-family: 'ModernFont' !important;
+}
+
+.landing-text-two {
+  text-align: center;
+  color: #fff;
+  min-width: 50%;
+  position: relative;
+  top: -500px;
+  animation: slideIn 2s ease-in-out;
   font-family: 'ModernFont' !important;
 }
 
@@ -115,6 +125,15 @@ nav a:hover:not(.navbar-brand) {
 .search-button:hover {
   background: linear-gradient(45deg, #ECE4DA, #574B3F);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.example-text {
+  text-align: center;
+  color: #fff;
+  min-width: 50%;
+  position: relative;
+  top: -500px;
+  animation: slideIn 2s ease-in-out;
 }
 
 .exercise-title {
@@ -171,8 +190,28 @@ nav a:hover:not(.navbar-brand) {
   color: #574B3F;
 }
 
+.exercise-card button:disabled {
+  background-color: #ccc; /* Gray background */
+  color: #666; /* Gray text */
+  cursor: not-allowed; /* Change cursor to not-allowed */
+}
+
 .workout-plan-header {
   font-family: 'ModernFont' !important;
+}
+
+.plan-button {
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.delete-button {
+  background-color: red !important;
 }
 
 @keyframes fadeIn {
