@@ -58,14 +58,14 @@ nav a:hover:not(.navbar-brand) {
   }
 }
 
-@keyframes clipReveal {
+/* @keyframes clipReveal {
   0% {
     clip-path: circle(0% at 50% 50%);
   }
   50% {
     clip-path: circle(75% at 50% 50%);
   }
-}
+} */
 
 .landing-hero-image {
   background-image: linear-gradient(rgba(41, 41, 41, 0.5), rgba(0, 0, 0, 0.5)), url(/images/fitness_hero_image.png);
@@ -74,26 +74,23 @@ nav a:hover:not(.navbar-brand) {
   background-repeat: no-repeat;
   height: 100vh;
   margin: 0;
-  animation: clipReveal 5s ease-in-out 1 forwards;
+  /* animation: clipReveal 5s ease-in-out 1 forwards; */
 }
 
 .landing-text {
   text-align: center;
   color: #fff;
   min-width: 50%;
-  position: relative;
-  top: -500px;
   animation: slideIn 2s ease-in-out;
   font-size: 4.25rem;
   font-family: 'ModernFont' !important;
+  margin-top: -500px;
 }
 
 .landing-text-two {
   text-align: center;
   color: #fff;
   min-width: 50%;
-  position: relative;
-  top: -500px;
   animation: slideIn 2s ease-in-out;
   font-family: 'ModernFont' !important;
 }
@@ -131,8 +128,6 @@ nav a:hover:not(.navbar-brand) {
   text-align: center;
   color: #fff;
   min-width: 50%;
-  position: relative;
-  top: -500px;
   animation: slideIn 2s ease-in-out;
 }
 
