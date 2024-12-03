@@ -29,7 +29,6 @@ function Header() {
 
     navigate('/');
   }
-
   return (
     <Container>
       <Navbar style={{ paddingTop: '18px', paddingBottom: '18px' }}>

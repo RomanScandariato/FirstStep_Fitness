@@ -33,7 +33,7 @@ nav a:hover:not(.navbar-brand) {
   text-decoration: underline;
 }
 
-.navbar-brand {
+.navbar-brand { 
   font-size: 25px !important;
   color: #574B3F !important;
   font-family: 'ModernFont' !important;

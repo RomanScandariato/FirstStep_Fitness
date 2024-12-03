@@ -48,35 +48,39 @@ function WorkoutPlan() {
   if (error) return <p>Error: {error.message}</p>;
 
   return (
-    <Container>
-      <h1 className="workout-plan-header text-center my-5">My Workout Plan</h1>
+    <Container fluid style={{ backgroundImage: 'url(/images/add_workout_image.png)', backgroundSize: 'cover', backgroundPosition: 'center', minHeight: '100vh', marginTop: '-50px' }}>
+      <h1 className="workout-plan-header text-center my-5" style={{ fontWeight: 'bold', color: 'black' }}>My Workout Plan</h1>
 
       {data.getUserExercises && data.getUserExercises.length > 0 ? (
         <ListGroup className="exercise-list" style={{ paddingBottom: '20px' }}>
-          {data.getUserExercises.map((workout: Workout, index: number) => (
-            <ListGroup.Item key={index} className="exercise-card">
-              <h4>{workout.name}</h4>
-              <p>Muscle: {workout.muscle}</p>
-              <p>Difficulty: {workout.difficulty}</p>
-              <p className="instructions-text mt-3">{workout.instructions}</p>
-              <Button variant="secondary" onClick={() => handleShowModal(workout)} className="plan-button edit-button">Edit</Button>
-              <button className="plan-button delete-button " onClick={() => handleDelete(workout._id)}>Delete</button>
-            </ListGroup.Item>
-          ))}
+        {data.getUserExercises.map((workout: Workout, index: number) => (
+          <ListGroup.Item key={index} className="exercise-card">
+          <h4 style={{ fontWeight: 'bold' }}>{workout.name}</h4>
+          <p>Muscle: {workout.muscle}</p>
+          <p>Difficulty: {workout.difficulty}</p>
+          <details className="flex-fill" style={{ marginBottom: '10px' }}>
+            <summary>Instructions: </summary>
+            {workout.instructions}
+          </details>
+          <Button variant="secondary" onClick={() => handleShowModal(workout)} className="plan-button edit-button" style={{ padding: '10px 20px', fontSize: '14px' }}>Edit</Button>
+          <span style={{ margin: '0 10px' }}></span>
+          <button className="plan-button delete-button" style={{ padding: '10px 20px', fontSize: '14px' }} onClick={() => handleDelete(workout._id)}>Delete</button>
+          </ListGroup.Item>
+        ))}
         </ListGroup>
       ) : (
         <p>No workouts added yet!</p>
       )}
       {selectedExercise && (
         <EditExercise
-          show={showModal}
-          handleClose={handleCloseModal}
-          exercise={selectedExercise}
-          refetch={refetch}
+        show={showModal}
+        handleClose={handleCloseModal}
+        exercise={selectedExercise}
+        refetch={refetch}
         />
       )}
-    </Container>
-  );
+      </Container>
+    );
 }
 
 export default WorkoutPlan;
