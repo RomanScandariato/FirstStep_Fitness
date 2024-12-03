@@ -145,6 +145,12 @@ nav a:hover:not(.navbar-brand) {
   justify-content: center;
 }
 
+.pre-search-text {
+  text-align: center !important;
+  margin-bottom: 30px;
+  opacity: 0.7;
+}
+
 .exercise-card {
   background-color: #fff;
   border-radius: 10px;
