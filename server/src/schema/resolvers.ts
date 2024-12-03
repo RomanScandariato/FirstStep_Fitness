@@ -19,10 +19,16 @@ const resolvers = {
         const response = await axios.get(`https://api.api-ninjas.com/v1/exercises?muscle=${muscle}`, {
           headers: { 'X-Api-Key': process.env.API_NINJAS_KEY }
         });
-        const user = await User.findById(context.req.user._id).populate('exercises');
+        // const user = await User.findById(context.req.user._id).populate('exercises');
 
-        const exercises = response.data.filter((exercise: any) => !user?.exercises.find((e: any) => e.name === exercise.name));
+        // const exercises = response.data.filter((exercise: any) => !user?.exercises.find((e: any) => e.name === exercise.name));
 
+        let exercises = response.data;
+
+        if (context.req.user) {
+          const user = await User.findById(context.req.user._id).populate('exercises');
+          exercises = exercises.filter((exercise: any) => user && !user.exercises.find((e: any) => e.name === exercise.name));
+        }
         return exercises;
       } catch (error) {
         console.error('Error fetching exercises:', error);

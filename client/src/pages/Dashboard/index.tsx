@@ -48,13 +48,13 @@ function WorkoutPlan() {
   if (error) return <p>Error: {error.message}</p>;
 
   return (
-    <Container fluid style={{ backgroundImage: 'url(/images/add_workout_image.png)', backgroundSize: 'cover', backgroundPosition: 'center', minHeight: '100vh', marginTop: '-50px' }}>
-      <h1 className="workout-plan-header text-center my-5" style={{ fontWeight: 'bold', color: 'black' }}>My Workout Plan</h1>
+    <Container className="workout-card-background" fluid>
+      <h1 className="workout-plan-header text-center my-4">My Workout Plan</h1>
 
       {data.getUserExercises && data.getUserExercises.length > 0 ? (
-        <ListGroup className="exercise-list" style={{ paddingBottom: '20px' }}>
+        <ListGroup className="exercise-list">
         {data.getUserExercises.map((workout: Workout, index: number) => (
-          <ListGroup.Item key={index} className="exercise-card">
+          <ListGroup.Item key={index} className="exercise-card-list workout-card">
           <h4 style={{ fontWeight: 'bold' }}>{workout.name}</h4>
           <p>Muscle: {workout.muscle}</p>
           <p>Difficulty: {workout.difficulty}</p>
@@ -73,14 +73,14 @@ function WorkoutPlan() {
       )}
       {selectedExercise && (
         <EditExercise
-        show={showModal}
-        handleClose={handleCloseModal}
-        exercise={selectedExercise}
-        refetch={refetch}
+          show={showModal}
+          handleClose={handleCloseModal}
+          exercise={selectedExercise}
+          refetch={refetch}
         />
       )}
-      </Container>
-    );
+    </Container>
+  );
 }
 
 export default WorkoutPlan;
