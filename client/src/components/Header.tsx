@@ -28,6 +28,7 @@ function Header() {
     }));
 
     navigate('/');
+    window.location.reload();
   }
   return (
     <Container>
