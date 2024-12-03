@@ -33,7 +33,7 @@ nav a:hover:not(.navbar-brand) {
   text-decoration: underline;
 }
 
-.navbar-brand { 
+.navbar-brand {
   font-size: 25px !important;
   color: #574B3F !important;
   font-family: 'ModernFont' !important;
@@ -266,6 +266,30 @@ nav a:hover:not(.navbar-brand) {
 .workout-form input::placeholder,
 .workout-form textarea::placeholder {
   color: #b5b4b4;
+}
+
+.workout-card-background {
+  min-height: 100vh;
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+
+.exercise-card-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px; 
+  padding-bottom: 20px;
+}
+
+.workout-card {
+  background-color: rgba(255, 255, 255, 0.8);
+  flex: 1 1 calc(50% - 20px);
+  box-sizing: border-box;
+  margin-bottom: 20px;
 }
 
 .who-are-we-text {

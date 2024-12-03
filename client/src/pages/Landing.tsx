@@ -6,7 +6,7 @@ function Landing() {
   const searchFormRef = useRef<HTMLFormElement>(null);
   const [query, setQuery] = React.useState('');
   const [searchQuery, setSearchQuery] = useState('');
- 
+
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setQuery(e.target.value);
@@ -44,7 +44,7 @@ function Landing() {
     <Container>
       <Row>
         <Col className="landing-hero-image" xs="12"></Col>
-        <Col  xs="12">
+        <Col xs="12">
           <h1 className="text-center landing-text">Elevate Your Fitness Journey</h1>
 
           <h3 className="text-center landing-text-two mt-5 opacity-75">Start by Searching for your Favorite Exercises!</h3>
@@ -67,9 +67,6 @@ function Landing() {
         </Col>
       </Row>
       <WorkoutSearch query={searchQuery} />
-      <Container>
-
-      </Container>
     </Container>
 
 
