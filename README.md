@@ -17,6 +17,10 @@
 
 
 ## Screenshots:
+![Screenshot 1](/client/public/images/LandingPage.png)
+![Screenshot 2](/client/public/images/ExerciseSearch.png)
+![Screenshot 3](/client/public/images/UserDashboard.png)
+![Screenshot 4](/client/public/images/AddAnExercise.png)
 
 
 ## Website:
