@@ -4,17 +4,22 @@ import WorkoutSearch from '../components/WorkoutSearch';
 
 function Landing() {
   const searchFormRef = useRef<HTMLFormElement>(null);
+  const workoutSearchRef = useRef<HTMLDivElement>(null);
   const [query, setQuery] = React.useState('');
   const [searchQuery, setSearchQuery] = useState('');
 
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setQuery(e.target.value);
+    
   };
 
   const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setSearchQuery(query);
+    if (workoutSearchRef.current) {
+      workoutSearchRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
   };
 
   useEffect(() => {
@@ -67,7 +72,9 @@ function Landing() {
 
         </Col>
       </Row>
-      <WorkoutSearch query={searchQuery} />
+      <div ref={workoutSearchRef}>
+        <WorkoutSearch query={searchQuery} />
+      </div>
     </Container>
 
 
