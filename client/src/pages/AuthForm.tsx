@@ -95,9 +95,9 @@ function AuthForm({isLogin}: {isLogin: boolean}) {
 
         <Form.Group className="mb-3" controlId="formBasicCheckbox">
           {isLogin ? (
-            <Nav.Link className="text-center text-primary" as={NavLink} to="/register" >Don't have an account? Click Here!</Nav.Link>
+            <Nav.Link className="text-center text-primary text-white" as={NavLink} to="/register" >Don't have an account? Click Here!</Nav.Link>
           ) : (
-            <Nav.Link className="text-center text-primary" as={NavLink} to="/login" >Have an account already? Click Here!</Nav.Link>
+            <Nav.Link className="text-center text-primary text-white" as={NavLink} to="/login" >Have an account already? Click Here!</Nav.Link>
           )}
         </Form.Group>
 

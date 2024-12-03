@@ -45,6 +45,7 @@ function Landing() {
       <Row>
         <Col className="landing-hero-image" xs="12"></Col>
         <Col xs="12">
+
           <h1 className="text-center landing-text">Elevate Your Fitness Journey</h1>
 
           <h3 className="text-center landing-text-two mt-5 opacity-75">Start by Searching for your Favorite Exercises!</h3>
