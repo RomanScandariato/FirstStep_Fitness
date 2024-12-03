@@ -44,3 +44,20 @@ export const ADD_EXERCISE = gql`
     }
   }
 `;
+
+export const UPDATE_EXERCISE = gql`
+  mutation UpdateExercise($id: ID!, $name: String, $muscle: String, $difficulty: String, $instructions: String) {
+    updateExercise(id: $id, name: $name, muscle: $muscle, difficulty: $difficulty, instructions: $instructions) {
+      message
+    }
+  }
+`;
+
+export const DELETE_EXERCISE = gql`
+  mutation DeleteExercise($id: ID!) {
+    deleteExercise(id: $id) {
+      success
+      message
+    }
+  }
+`;

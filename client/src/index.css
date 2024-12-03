@@ -82,9 +82,19 @@ nav a:hover:not(.navbar-brand) {
   color: #fff;
   min-width: 50%;
   position: relative;
-  top: -450px;
+  top: -500px;
   animation: slideIn 2s ease-in-out;
   font-size: 4.25rem;
+  font-family: 'ModernFont' !important;
+}
+
+.landing-text-two {
+  text-align: center;
+  color: #fff;
+  min-width: 50%;
+  position: relative;
+  top: -500px;
+  animation: slideIn 2s ease-in-out;
   font-family: 'ModernFont' !important;
 }
 
@@ -117,6 +127,15 @@ nav a:hover:not(.navbar-brand) {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
+.example-text {
+  text-align: center;
+  color: #fff;
+  min-width: 50%;
+  position: relative;
+  top: -500px;
+  animation: slideIn 2s ease-in-out;
+}
+
 .exercise-title {
   text-align: center;
   font-size: 3rem;
@@ -125,8 +144,8 @@ nav a:hover:not(.navbar-brand) {
 }
 
 .exercise-list {
-  display: flex;
-  flex-wrap: wrap;
+  display: flex !important;
+  flex-wrap: wrap !important;
   gap: 20px;
   justify-content: center;
 }
@@ -138,6 +157,29 @@ nav a:hover:not(.navbar-brand) {
   padding: 20px;
   width: calc(50% - 20px);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.exercise-card-2 {
+  background-color: #fff;
+  border-radius: 10px !important;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px !important;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.exercise-card-2:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.exercise-card-2 h4 {
+  font-size: 1.5rem;
+  color: #574B3F;
+}
+
+.exercise-card-2 p {
+  font-size: 1rem;
+  color: #574B3F;
 }
 
 .exercise-card:hover {
@@ -171,8 +213,28 @@ nav a:hover:not(.navbar-brand) {
   color: #574B3F;
 }
 
+.exercise-card button:disabled {
+  background-color: #ccc; /* Gray background */
+  color: #666; /* Gray text */
+  cursor: not-allowed; /* Change cursor to not-allowed */
+}
+
 .workout-plan-header {
   font-family: 'ModernFont' !important;
+}
+
+.plan-button {
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.delete-button {
+  background-color: red !important;
 }
 
 @keyframes fadeIn {
@@ -227,6 +289,24 @@ nav a:hover:not(.navbar-brand) {
 .workout-form input::placeholder,
 .workout-form textarea::placeholder {
   color: #b5b4b4;
+}
+
+
+.exercise-list-2 {
+  display: grid;
+  grid-template-rows: repeat(2, 1fr); /* Two columns layout */
+  gap: 20px; /* Space between cards */
+  padding-bottom: 20px;
+  max-height: 500px;
+  overflow-y: auto;
+}
+
+.exercise-card-list {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .who-are-we-text {
