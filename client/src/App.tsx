@@ -10,7 +10,7 @@ import AuthForm from './pages/AuthForm';
 import Landing from './pages/Landing';
 import About from './pages/About';
 import ContactForm from './pages/ContactForm';
-import WorkoutPlan from './pages/Dashboard/index';
+import WorkoutPlan from './pages/Dashboard';
 import AddExercise from './pages/AddExercise';
 import WorkoutSearch from './components/WorkoutSearch';
 

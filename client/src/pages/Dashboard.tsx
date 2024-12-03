@@ -1,12 +1,12 @@
 import { Button, Container, ListGroup, Row, Col } from 'react-bootstrap';
-import { Workout } from '../../interfaces';
+import { Workout } from '../interfaces';
 import { useEffect, useState } from 'react';
 
 import { useQuery } from '@apollo/client';
-import { GET_USER_EXERCISES } from '../../graphql/queries';
+import { GET_USER_EXERCISES } from '../graphql/queries';
 import { useMutation } from '@apollo/client';
-import { DELETE_EXERCISE } from '../../graphql/mutations';
-import EditExercise from '../../components/EditExercise';
+import { DELETE_EXERCISE } from '../graphql/mutations';
+import EditExercise from '../components/EditExercise';
 
 
 function WorkoutPlan() {
