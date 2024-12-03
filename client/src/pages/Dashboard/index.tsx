@@ -1,4 +1,4 @@
-import { Button, Container, ListGroup } from 'react-bootstrap';
+import { Button, Container, ListGroup, Row, Col } from 'react-bootstrap';
 import { Workout } from '../../interfaces';
 import { useEffect, useState } from 'react';
 
@@ -48,25 +48,29 @@ function WorkoutPlan() {
   if (error) return <p>Error: {error.message}</p>;
 
   return (
-    <Container className="workout-card-background" fluid>
+    <Container>
       <h1 className="workout-plan-header text-center my-4">My Workout Plan</h1>
 
       {data.getUserExercises && data.getUserExercises.length > 0 ? (
-        <ListGroup className="exercise-list">
-        {data.getUserExercises.map((workout: Workout, index: number) => (
-          <ListGroup.Item key={index} className="exercise-card-list workout-card">
-          <h4 style={{ fontWeight: 'bold' }}>{workout.name}</h4>
-          <p>Muscle: {workout.muscle}</p>
-          <p>Difficulty: {workout.difficulty}</p>
-          <details className="flex-fill" style={{ marginBottom: '10px' }}>
-            <summary>Instructions: </summary>
-            {workout.instructions}
-          </details>
-          <Button variant="secondary" onClick={() => handleShowModal(workout)} className="plan-button edit-button" style={{ padding: '10px 20px', fontSize: '14px' }}>Edit</Button>
-          <span style={{ margin: '0 10px' }}></span>
-          <button className="plan-button delete-button" style={{ padding: '10px 20px', fontSize: '14px' }} onClick={() => handleDelete(workout._id)}>Delete</button>
-          </ListGroup.Item>
-        ))}
+        <ListGroup className="exercise-list" style={{ paddingBottom: '20px' }}>
+        <Row>
+            {data.getUserExercises.map((workout: Workout, index: number) => (
+              <Col xs={12} md={6} key={index} className="mb-4">
+                <ListGroup.Item className="exercise-card-2 extra-padding">
+                  <h4 style={{ fontWeight: 'bold' }}>{workout.name}</h4>
+                  <p>Muscle: {workout.muscle}</p>
+                  <p>Difficulty: {workout.difficulty}</p>
+                  <details className="flex-fill" style={{ marginBottom: '10px' }}>
+                    <summary>Instructions: </summary>
+                    {workout.instructions}
+                  </details>
+                  <Button variant="secondary" onClick={() => handleShowModal(workout)} className="plan-button edit-button" style={{ padding: '10px 20px', fontSize: '14px' }}>Edit</Button>
+                  <span style={{ margin: '0 10px' }}></span>
+                  <button className="plan-button delete-button" style={{ padding: '10px 20px', fontSize: '14px' }} onClick={() => handleDelete(workout._id)}>Delete</button>
+                </ListGroup.Item>
+              </Col>
+            ))}
+          </Row>
         </ListGroup>
       ) : (
         <p>No workouts added yet!</p>
