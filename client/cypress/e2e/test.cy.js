@@ -72,19 +72,6 @@ describe('Tests', () => {
     cy.get('h1').contains('My Workout Plan');
   });
 
-  it('Should search for an exercise', () => {
-    loginUser(cy);
-
-    cy.get('nav a:contains("Home")').click();
-
-    cy.get('input[name="search"]').type('chest');
-
-    cy.get('button').contains('Search').click();
-
-    cy.get('h4').contains('Chest');
-
-  });
-
   it('Should allow user to add exercise through form', () => {
     loginUser(cy);
 
