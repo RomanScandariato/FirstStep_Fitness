@@ -58,6 +58,7 @@ function Landing() {
           <div className="search-form-container">
             <form ref={searchFormRef} className="d-flex text-center landing-text justify-content-center mt-3" onSubmit={handleSearch}>
               <input
+                name="search"
                 className="search-form-control form me-2"
                 type="search"
                 placeholder="Search For Exercises"
