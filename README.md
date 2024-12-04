@@ -28,4 +28,4 @@
 
 
 ## Questions:
-- This application was created by Roman Scandariato, Matt O'Shea, Razieh, and Matt Morgan. Feel free to access our repository here - [GitHub Repo](https://github.com/RomanScandariato/FirstStep_Fitness)! Reach out with questions by clicking on [Contact](https://firststep-fitness.onrender.com/contact) in the upper right corner of the website.
+- This application was created by Roman Scandariato, Matt O'Shea, Razieh Zarrabi, and Matt Morgan. Feel free to access our repository here - [GitHub Repo](https://github.com/RomanScandariato/FirstStep_Fitness)! Reach out with questions by clicking on [Contact](https://firststep-fitness.onrender.com/contact) in the upper right corner of the website.
