@@ -75,7 +75,7 @@ describe('Tests', () => {
   it('Should search for an exercise', () => {
     loginUser(cy);
 
-    cy.contains('nav a', 'Home').click();
+    cy.get('nav a:contains("Home")').click();
 
     cy.get('input[name="search"]').type('chest');
 
